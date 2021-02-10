@@ -1,0 +1,9 @@
+name: Pl3xMap-Essentials
+version: ${project.version}
+main: net.pl3x.map.essentials.Pl3xMapEssentials
+api-version: 1.16
+authors: [ BillyGalbreath ]
+description: Essentials addon for Pl3xMap
+softdepend:
+  - Pl3xMap
+  - Essentials
