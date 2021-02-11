@@ -81,8 +81,12 @@ public class WorldConfig {
     }
 
     public int ICON_SIZE = 16;
+    public int ICON_ANCHOR_X = 8;
+    public int ICON_ANCHOR_Z = 16;
 
     private void iconSettings() {
         ICON_SIZE = getInt("icon.size", ICON_SIZE);
+        ICON_ANCHOR_X = getInt("icon.anchor.x", ICON_ANCHOR_X);
+        ICON_ANCHOR_Z = getInt("icon.anchor.z", ICON_ANCHOR_Z);
     }
 }

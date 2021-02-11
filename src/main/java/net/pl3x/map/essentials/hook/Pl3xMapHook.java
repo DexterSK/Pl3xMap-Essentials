@@ -1,6 +1,7 @@
 package net.pl3x.map.essentials.hook;
 
 import net.pl3x.map.api.Key;
+import net.pl3x.map.api.Pl3xMap;
 import net.pl3x.map.api.Pl3xMapProvider;
 import net.pl3x.map.api.SimpleLayerProvider;
 import net.pl3x.map.essentials.Logger;
@@ -26,12 +27,12 @@ public class Pl3xMapHook {
     public static void load(Plugin plugin) {
         try {
             BufferedImage icon = ImageIO.read(new File(plugin.getDataFolder(), "warp.png"));
-            Pl3xMapProvider.get().iconRegistry().register(warpIconKey, icon);
+            api().iconRegistry().register(warpIconKey, icon);
         } catch (IOException e) {
             Logger.log().log(Level.WARNING, "Failed to register warp icon", e);
         }
 
-        Pl3xMapProvider.get().mapWorlds().forEach(mapWorld -> {
+        api().mapWorlds().forEach(mapWorld -> {
             WorldConfig worldConfig = WorldConfig.get(mapWorld);
             if (worldConfig.ENABLED) {
                 SimpleLayerProvider provider = SimpleLayerProvider.builder(worldConfig.WARPS_LABEL)
@@ -49,5 +50,9 @@ public class Pl3xMapHook {
     public static void disable() {
         providers.values().forEach(Pl3xMapTask::disable);
         providers.clear();
+    }
+
+    public static Pl3xMap api() {
+        return Pl3xMapProvider.get();
     }
 }

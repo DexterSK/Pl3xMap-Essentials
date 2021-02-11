@@ -51,10 +51,9 @@ public class Pl3xMapTask extends BukkitRunnable {
     }
 
     private void handle(String warpName, Location loc) {
-        int size = worldConfig.ICON_SIZE;
+        Icon icon = Marker.icon(Point.fromLocation(loc), Pl3xMapHook.warpIconKey, worldConfig.ICON_SIZE);
 
-        Icon icon = Marker.icon(Point.fromLocation(loc), Pl3xMapHook.warpIconKey, size);
-        icon.anchor(Point.of(size / 2D, size));
+        icon.anchor(Point.of(worldConfig.ICON_ANCHOR_X, worldConfig.ICON_ANCHOR_Z));
 
         icon.markerOptions(MarkerOptions.builder()
                 .hoverTooltip(worldConfig.WARPS_TOOLTIP
