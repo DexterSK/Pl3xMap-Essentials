@@ -2,6 +2,7 @@ package net.pl3x.map.essentials;
 
 import net.pl3x.map.essentials.configuration.Config;
 import net.pl3x.map.essentials.hook.Pl3xMapHook;
+import net.pl3x.map.essentials.listener.EssentialsListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -34,6 +35,8 @@ public final class Pl3xMapEssentials extends JavaPlugin {
         }
 
         Pl3xMapHook.load(this);
+
+        getServer().getPluginManager().registerEvents(new EssentialsListener(), this);
     }
 
     @Override
