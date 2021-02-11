@@ -34,7 +34,7 @@ public class Pl3xMapHook {
         Pl3xMapProvider.get().mapWorlds().forEach(mapWorld -> {
             WorldConfig worldConfig = WorldConfig.get(mapWorld);
             if (worldConfig.ENABLED) {
-                SimpleLayerProvider provider = SimpleLayerProvider.builder("DeathSpots")
+                SimpleLayerProvider provider = SimpleLayerProvider.builder(worldConfig.WARPS_LABEL)
                         .showControls(worldConfig.WARPS_SHOW_CONTROLS)
                         .defaultHidden(worldConfig.WARPS_CONTROLS_HIDDEN)
                         .build();
