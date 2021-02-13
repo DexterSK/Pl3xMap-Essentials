@@ -61,7 +61,7 @@ public class Pl3xMapTask extends BukkitRunnable {
                 )
         );
 
-        String markerid = "essentials_" + world.name() + "_warp_" + warpName;
+        String markerid = "essentials_" + world.name() + "_warp_" + warpName.hashCode();
         this.provider.addMarker(Key.of(markerid), icon);
     }
 
