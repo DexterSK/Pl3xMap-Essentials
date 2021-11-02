@@ -12,11 +12,21 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class EssentialsListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onVanishStatusChange(VanishStatusChangeEvent event) {
+    public void onVanishStatusChange(VanishStatusChangeEvent event)
+	{
         if (Config.HIDE_VANISHED) {
-            Player player = event.getAffected().getBase();
-            boolean vanished = event.getValue();
-            Pl3xMapHook.api().playerManager().hidden(player.getUniqueId(), vanished);
+        	IUser p1 = event.getAffected();
+        	
+        	if( p1 != null )
+        	{
+        		Player player = p1.getBase();
+                boolean vanished = event.getValue();
+            	Pl3xMapHook.api().playerManager().hidden(player.getUniqueId(), vanished);
+            	
+            	//Logger.log().log( Level.INFO, String.format("Player %s has been %s", player.getName(), vanished ? "vanished" : "unvanished") );
+        	}
+        	//else
+        	//	Logger.log().log( Level.INFO, "Command run by console xd");
         }
     }
 
